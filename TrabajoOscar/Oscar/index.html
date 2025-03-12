@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sportify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #6dd5ed, #2193b0);
+            color: #333;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+        .logo span {
+            color: #ffeb3b;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .welcome-text {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        .input-group input:focus {
+            border-color: #ffeb3b;
+            outline: none;
+        }
+        .error-message {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #ffeb3b, #fbc02d);
+            color: #333;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 235, 59, 0.4);
+        }
+        .btn-google {
+            background-color: transparent;
+            border: 2px solid #e0e0e0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .btn-google:hover {
+            background-color: #f9f9f9;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #777;
+        }
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 0 10px;
+        }
+        .links {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .links a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .links a:hover {
+            color: #ffeb3b;
+        }
+        .fitness-quote {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #fff;
+            font-size: 14px;
+        }
+        .bounce {
+            animation: bounce-animation 2s infinite;
+        }
+        @keyframes bounce-animation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .shake {
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <h1>Sport<span>ify</span></h1>
+    </div>
+    <div class="login-container">
+        <div class="welcome-text">¡Bienvenido de nuevo!</div>
+        <form id="login-form">
+            <div class="input-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario">
+                <div class="error-message" id="usuario-error">Este campo es obligatorio</div>
+            </div>
+            <div class="input-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Ingresa tu contraseña">
+                <div class="error-message" id="contrasena-error">Este campo es obligatorio</div>
+            </div>
+            <button type="submit" class="btn btn-primary bounce">Iniciar sesión</button>
+        </form>
+        <div class="divider">o</div>
+        <button class="btn btn-google">
+            <i class="fab fa-google"></i>
+            Inicia con Google
+        </button>
+        <div class="links">
+            <a href="#" id="register-link">Crear cuenta</a>
+            <a href="#" id="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+    </div>
+    <div class="fitness-quote">
+        "El éxito no es siempre ganar, sino intentarlo una vez más"
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            // Validate username
+            const usuario = document.getElementById('usuario');
+            const usuarioError = document.getElementById('usuario-error');
+            if (!usuario.value.trim()) {
+                usuarioError.style.display = 'block';
+                usuario.classList.add('shake');
+                isValid = false;
+                setTimeout(() => {
+                    usuario.classList.remove('shake');
+                }, 500);
+            } else {
+                usuarioError.style.display = 'none';
+            }
+            // Validate password
+            const contrasena = document.getElementById('contrasena');
+            const contrasenaError = document.getElementById('contrasena-error');
+            if (!contrasena.value.trim()) {
+                contrasenaError.style.display = 'block';
+                contrasena.classList.add('shake');
+                isValid = false;
+                setTimeout(() => {
+                    contrasena.classList.remove('shake');
+                }, 500);
+            } else {
+                contrasenaError.style.display = 'none';
+            }
+            // If validation passes, navigate to home page
+            if (isValid) {
+                localStorage.setItem('sportifyUser', usuario.value);
+                window.location.href = '../Front/todo/index.html';
+            }
+        });
+        // Register link
+        document.getElementById('register-link').addEventListener('click', function() {
+            alert('Funcionalidad de registro en desarrollo. ¡Próximamente!');
+        });
+        // Forgot password link
+        document.getElementById('forgot-link').addEventListener('click', function() {
+            alert('Funcionalidad de recuperación de contraseña en desarrollo. ¡Próximamente!');
+        });
+        // Google login button
+        document.querySelector('.btn-google').addEventListener('click', function() {
+            alert('Inicio de sesión con Google en desarrollo. ¡Próximamente!');
+        });
+    </script>
+</body>
+</html>
