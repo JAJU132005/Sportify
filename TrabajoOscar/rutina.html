@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutinas - Sportify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #6dd5ed, #2193b0);
+            color: #333;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: #ffeb3b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .last-training {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img id="foto" src="jake.jpg" alt="Foto de usuario">
+        <h2 id="nombre"></h2>
+
+        <!-- Botones de rutina -->
+        <button onclick="redirigirEjercicios(1)">Rutina 1</button>
+        <button onclick="redirigirEjercicios(2)">Rutina 2</button>
+        <button onclick="redirigirEjercicios(3)">Rutina 3</button>
+        <button onclick="redirigirEjercicios(4)">Rutina 4</button>
+        <button onclick="redirigirEjercicios(5)">Rutina 5</button>
+
+        <p class="last-training">Última vez que entrenaste: <span id="ultimaEntrenamiento"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cargar datos del usuario desde localStorage
+            let usuario = localStorage.getItem("usuario") || "Oscar Tristancho";
+            let foto = localStorage.getItem("foto") || "jake.jpg";
+            let ultimaEntrenamiento = localStorage.getItem("ultimaEntrenamiento") || "No registrado";
+
+            // Mostrar datos en la interfaz
+            document.getElementById("nombre").textContent = usuario;
+            document.getElementById("foto").src = foto;
+            document.getElementById("ultimaEntrenamiento").textContent = ultimaEntrenamiento;
+        });
+
+        // Función para redirigir a ejercicios.html con el número de rutina
+        function redirigirEjercicios(numero) {
+            // Guardar la fecha de la última vez que entrenó
+            localStorage.setItem("ultimaEntrenamiento", new Date().toLocaleDateString());
+            document.getElementById("ultimaEntrenamiento").textContent = new Date().toLocaleDateString();
+
+            // Redirigir a ejercicios.html con el número de rutina como parámetro
+            window.location.href = `ejercicios.html?rutina=${numero}`;
+        }
+    </script>
+
+</body>
+</html>

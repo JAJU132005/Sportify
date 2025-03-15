@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios - Sportify</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #ff9966, #ff5e62);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            color: #ffeb3b;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Ejercicios para la rutina</h2>
+        <ul id="lista-ejercicios"></ul>
+        <a href="rutina.html">Volver</a>
+    </div>
+
+    <script>
+        const ejercicios = {
+            1: ["Sentadillas (Piernas)", "Press de banca (Pecho)", "Dominadas (Espalda)", "Plancha (Core)", "Fondos (Tríceps)"],
+            2: ["Burpees (Cardio)", "Peso muerto (Espalda baja y piernas)", "Press militar (Hombros)", "Curl de bíceps", "Elevaciones laterales"],
+            3: ["Zancadas con salto", "Mountain climbers", "Flexiones diamante", "Remo con barra", "Abdominales bicicleta"],
+            4: ["Saltar la cuerda", "Press inclinado con mancuernas", "Extensión de tríceps", "Estocadas con mancuernas", "Hip thrust (Glúteos)"],
+            5: ["Deadlift sumo", "Press Arnold", "Dips en paralelas", "Puente de glúteos", "Crunch en banco declinado"]
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let rutinaSeleccionada = localStorage.getItem("rutinaSeleccionada") || "1";
+            let listaEjercicios = document.getElementById("lista-ejercicios");
+
+            ejercicios[rutinaSeleccionada].forEach(ejercicio => {
+                let li = document.createElement("li");
+                li.textContent = ejercicio;
+                listaEjercicios.appendChild(li);
+            });
+        });
+    </script>
+
+</body>
+</html>
